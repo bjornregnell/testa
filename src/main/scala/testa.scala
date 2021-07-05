@@ -25,7 +25,7 @@ case class TestCase[A](name: String, thunk: () => A):
 object TestCase:
   var tests = Vector.empty[TestCase[?]] 
 
-  def add(t: TestCase[?]): Unit = tests :+= t
+  def add[A](t: TestCase[A]): Unit = tests = (tests :+ t)
   
   def runAll(): Seq[String] = 
     for i <- tests.indices yield 
